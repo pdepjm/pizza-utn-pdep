@@ -21,3 +21,12 @@ object sistema{
 
     method pizzaFicionadoS()=usuarios.filter({usuario=> usuario.pizzaFicionado()})
 }
+
+class Premio {
+    const ganador
+    const anio
+
+    method texto()= ganador.nombre() + "ganó el premio pizza loca en el año" + anio
+
+    method viejo()= 2020 > anio
+}

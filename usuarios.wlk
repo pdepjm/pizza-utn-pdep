@@ -1,4 +1,5 @@
 import pizza.*
+import sistema.*
 
 class Usuario{
     var pizzasFav = []
@@ -23,6 +24,8 @@ class Usuario{
     method pizzaFicionado()= crazyPizzaPoints > 1000
 
     method premio(){
-
+        premios.add(new Premio(ganador = self, anio = new Date().year()))
     }
+
+    method clasico()= premios.any({premio => premio.viejo()})
 }
