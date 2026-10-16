@@ -2,6 +2,7 @@ import usuarios.*
 
 object sistema{
     var usuarios=[]
+    var ganancias= 0
 
     method registrarUsuario(nombre){
         usuarios.add(new Usuario(nombre=nombre))
@@ -20,6 +21,8 @@ object sistema{
     method premioPizzaFicionados()=self.pizzaFicionadoS().forEach({pizzaFicionadoS => pizzaFicionadoS.premio()})
 
     method pizzaFicionadoS()=usuarios.filter({usuario=> usuario.pizzaFicionado()})
+
+    method ganancias()= ganancias
 }
 
 class Premio {
