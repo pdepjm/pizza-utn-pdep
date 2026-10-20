@@ -1,7 +1,7 @@
 import usuarios.*
 
 object sistema{
-    var usuarios=[]
+    const usuarios=[]
     var ganancias= 0
 
     method registrarUsuario(nombre){
@@ -23,6 +23,10 @@ object sistema{
     method pizzaFicionadoS()=usuarios.filter({usuario=> usuario.pizzaFicionado()})
 
     method ganancias()= ganancias
+
+    method comproPizza(pizza){
+        ganancias.add(pizza.precio())
+    }
 }
 
 class Premio {

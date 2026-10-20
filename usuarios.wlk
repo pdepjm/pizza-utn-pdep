@@ -2,10 +2,10 @@ import pizza.*
 import sistema.*
 
 class Usuario{
-    var pizzasFav = []
+    const pizzasFav = []
     const nombre // se va a tener que definicializar obligatoriamente 
     var crazyPizzaPoints = 0
-    var premios = []
+    const premios = []
 
     method agregarPizza(pizza){
         pizzasFav.add(pizza)
@@ -15,6 +15,7 @@ class Usuario{
 
     method comprarPizza(pizza){
         crazyPizzaPoints += pizza.precio().div(100)
+        sistema.comproPizza(pizza)
     }
 
     method sumarPuntos(numero){
