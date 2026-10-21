@@ -6,6 +6,7 @@ class Usuario{
     const nombre // se va a tener que definicializar obligatoriamente 
     var crazyPizzaPoints = 0
     const premios = []
+    const metodoDePago
 
     method agregarPizza(pizza){
         pizzasFav.add(pizza)
@@ -14,8 +15,12 @@ class Usuario{
     method tieneFavorita(pizza)= pizzasFav.contains(pizza)
 
     method comprarPizza(pizza){
+        if (!sistema.esUsuario(self)) {
+            throw new DomainException(message = "No eres usurio, registrate para comprar")
+            }
         crazyPizzaPoints += pizza.precio().div(100)
         sistema.comproPizza(pizza)
+        metodoDePago.pagar(pizza)
     }
 
     method sumarPuntos(numero){
@@ -29,4 +34,27 @@ class Usuario{
     }
 
     method clasico()= premios.any({premio => premio.viejo()})
+}
+
+object tarjetaDeCredito{
+    const limite = 22000
+    var deuda = 0
+
+    method pagar(pizza){
+        if (pizza.precio() > limite){ throw new DomainException (message = "Limite alcanzado. Transacción cancelada.")}
+        deuda += pizza.precio()
+    }
+
+}
+
+object tarjetaDeDebito{
+    const saldo = 23000
+
+    method pagar(pizza){
+        if (pizza.precio() > saldo) {throw new DomainException (message = "Saldo insuficiente. Transacción cancelada.")}
+    }
+}
+
+object pDePay{
+    method pagar(pizza){}
 }

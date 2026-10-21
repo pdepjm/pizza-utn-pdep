@@ -4,9 +4,11 @@ object sistema{
     const usuarios=[]
     var ganancias= 0
 
-    method registrarUsuario(nombre){
-        usuarios.add(new Usuario(nombre=nombre))
+    method registrarUsuario(nombre, metodoPago){
+        usuarios.add(new Usuario(nombre=nombre, metodoDePago = metodoPago))
     }
+
+    method esUsuario(usuario) = usuarios.contains(usuario)
 
     method cuantosLesGusta(pizza){
         usuarios.count({usuario => usuario.tieneFavorita(pizza)})
@@ -25,8 +27,9 @@ object sistema{
     method ganancias()= ganancias
 
     method comproPizza(pizza){
-        ganancias.add(pizza.precio())
+        ganancias += pizza.precio()
     }
+
 }
 
 class Premio {
