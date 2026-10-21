@@ -18,9 +18,9 @@ class Usuario{
         if (!sistema.esUsuario(self)) {
             throw new DomainException(message = "No eres usurio, registrate para comprar")
             }
+        metodoDePago.pagar(pizza)
         crazyPizzaPoints += pizza.precio().div(100)
         sistema.comproPizza(pizza)
-        metodoDePago.pagar(pizza)
     }
 
     method sumarPuntos(numero){

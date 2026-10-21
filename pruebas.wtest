@@ -1,0 +1,33 @@
+import pizza.*
+import usuarios.*
+import sistema.*
+
+describe "test de metodos de pago"{
+    test "tarjeta de credito NO puede pagar la tarjeta "{
+        const usuario = new Usuario (nombre = "kiara", metodoDePago = tarjetaDeCredito)
+        sistema.registrarUsuario("kiara", tarjetaDeCredito)
+        usuario.comprarPizza(muzzaYPeperoni)
+        assert.equals(0, sistema.ganancias())
+    }
+
+    test "tarjeta de credito SI puede pagar la tarjeta "{
+        const usuario = new Usuario (nombre = "kiara", metodoDePago = tarjetaDeCredito)
+        sistema.registrarUsuario("kiara", tarjetaDeCredito)
+        usuario.comprarPizza(muzzarella)
+        assert.equals(20000, sistema.ganancias())
+    }
+
+    test "tarjeta de debito NO puede pagar la tarjeta "{
+        const usuario = new Usuario (nombre = "kiara", metodoDePago = tarjetaDeDebito)
+        sistema.registrarUsuario("kiara", tarjetaDeDebito)
+        usuario.comprarPizza(napolitana)
+        assert.equals(0, sistema.ganancias())
+    }
+
+    test "tarjeta de debito SI puede pagar la tarjeta "{
+        const usuario = new Usuario (nombre = "kiara", metodoDePago = tarjetaDeDebito)
+        sistema.registrarUsuario("kiara", tarjetaDeDebito)
+        usuario.comprarPizza(muzzarella)
+        assert.equals(20000, sistema.ganancias())
+    }
+}
