@@ -36,7 +36,8 @@ class Usuario{
     method clasico()= premios.any({premio => premio.viejo()})
 }
 
-object tarjetaDeCredito{
+
+class TarjetaDeCredito{
     const limite = 22000
     var deuda = 0
 
@@ -47,7 +48,7 @@ object tarjetaDeCredito{
 
 }
 
-object tarjetaDeDebito{
+class TarjetaDeDebito{
     const saldo = 23000
 
     method pagar(pizza){
@@ -55,6 +56,6 @@ object tarjetaDeDebito{
     }
 }
 
-object pDePay{
+class PDePay{
     method pagar(pizza){}
 }
