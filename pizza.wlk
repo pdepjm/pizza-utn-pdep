@@ -1,19 +1,13 @@
-object muzzarella{
-    method precio() = 20000
-    method vegetariana() = true
+class Pizza{
+    var precio
+    const esVegetariana
+    method precio()= precio 
 }
 
-object napolitana {
-    method precio()= 24000
-    method vegetariana() = true
-}
+const muzzarella = new Pizza (precio = 20000, esVegetariana = true)
 
-object muzzaYPeperoni{
-    method precio() = 24000
-    method vegetariana() = false
-}
+const napolitana = new Pizza (precio = 24000, esVegetariana = true)
 
-object jamonYMorron{
-    method precio() = 25000
-    method vegetariana() = false
-}
+const muzzaYPeperoni = new Pizza (precio = 24000, esVegetariana = false)
+
+const jamonYMorron = new Pizza (precio = 25000, esVegetariana = false)
